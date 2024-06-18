@@ -1,0 +1,46 @@
+﻿<Window x:Class="Diplom.Windows.Orders_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diplom.Windows"
+        mc:Ignorable="d"
+        Title="SBKK Shop" Height="350" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition Height="42"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="В какой заказ вы хотите добавить товар?" FontSize="20" HorizontalAlignment="Center"/>
+
+        <DataGrid Grid.Row="1" Background="White" Margin="5" Name="orders" BorderThickness="1" IsReadOnly="True" AutoGenerateColumns="False" MouseDoubleClick="doubleclick">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Width="*" Binding="{Binding OrderNumber}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Name="nomber" Text="Номер заказа" FontSize="15"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Width="*"  Binding="{Binding OrderDate}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Дата заказа" FontSize="15"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <UniformGrid Grid.Row="2" Columns="3">
+            <Button Content="Отмена" Click="back_click" Margin="10,5" Background="AliceBlue" Foreground="MidnightBlue"/>
+
+            <Button Content="добавть в заказ" Click="add_in_order" Background="AliceBlue" Foreground="MidnightBlue"/>
+
+            <Button Content="Создать новый заказ" Click="add_click" Margin="10,5" Tag="{Binding ElementName=ListViewProduct, Path=SelectedItem}" Background="AliceBlue" Foreground="MidnightBlue"/>
+
+        </UniformGrid>
+        
+    </Grid>
+</Window>

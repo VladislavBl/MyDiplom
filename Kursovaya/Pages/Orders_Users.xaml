@@ -1,0 +1,49 @@
+﻿<Page x:Class="Diplom.Pages.Orders_Users"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Diplom.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Orders_Users"
+      IsVisibleChanged="Doc_Vis_Change">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Background="White" Margin="10" Name="orders" BorderThickness="1" IsReadOnly="True" AutoGenerateColumns="False" MouseDoubleClick="thisProduct">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" Binding="{Binding OrderNumber}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Номер заказа" FontSize="15"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Width="*" Binding="{Binding OrderDate}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Дата заказа" FontSize="15"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Width="*" Binding="{Binding OrderItemsCount}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Количество товаров" FontSize="15"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <UniformGrid Grid.Row="1" Columns="3">
+            <Button Margin="10, 0" Content="Удалить заказ(ы)" Click="remove_click" Background="AliceBlue" Foreground="MidnightBlue"/>
+            <Button Margin="10, 0" Content="Посмотреть заказ" Click="Check_order" Background="AliceBlue" Foreground="MidnightBlue" Cursor="Hand"/>
+            <Button Margin="10, 0" Content="Новый заказ" Click="new_order" Background="AliceBlue" Foreground="MidnightBlue"/>
+            <Button Margin="10, 0" Visibility="Visible" Name="buy" Content="Оплатить" Background="AliceBlue" Foreground="MidnightBlue"/>
+            <Button Visibility="Hidden"/>
+            <Button Visibility="Visible" Name="Back_click" Margin="10, 0" Content="Назад" Click="back_click" Background="AliceBlue" Foreground="MidnightBlue" Cursor="Hand"/>
+        </UniformGrid>
+    </Grid>
+</Page>
