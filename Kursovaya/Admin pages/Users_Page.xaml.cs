@@ -21,6 +21,7 @@ namespace Diplom.Admin_pages
     /// </summary>
     public partial class Users_Page : Page
     {
+
         public Users_Page()
         {
             InitializeComponent();
@@ -38,6 +39,15 @@ namespace Diplom.Admin_pages
             {
                 MessageBox.Show("Ошибка: Нужно выбрать хотя бы одну строку!");
                 return;
+            }
+            foreach (var selectedItem in DataGridUsers.SelectedItems)
+            {
+                var user = selectedItem as User;
+                if (user != null && user.UsersStatus == "Admin")
+                {
+                    MessageBox.Show("Ошибка: Нельзя удалять пользователя со статусом администратора");
+                    return;
+                }
             }
             if (MessageBox.Show("Вы уверены, что хотите удалить выбранные поля?", "Удалить выбранные поля?", MessageBoxButton.YesNo) == MessageBoxResult.No)
             {
