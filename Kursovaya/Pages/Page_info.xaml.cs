@@ -69,8 +69,15 @@ namespace Diplom.Pages
                 CoreModel.init().Users.Add(info);
             }
 
-            CoreModel.init().SaveChanges();
-            Dispatcher.BeginInvoke(new Action(() => MessageBox.Show("Изменения успешно применены!")));
+            if (MessageBox.Show("Вы уверены, что хотите применить изменения?", "Применить изменения?", MessageBoxButton.YesNo) == MessageBoxResult.No)
+            {
+                return;
+            }
+            else
+            {
+                CoreModel.init().SaveChanges();
+                Dispatcher.BeginInvoke(new Action(() => MessageBox.Show("Изменения успешно применены!")));
+            }
 
         }
 
