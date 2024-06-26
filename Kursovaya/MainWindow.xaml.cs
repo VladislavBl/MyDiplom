@@ -57,6 +57,12 @@ namespace Diplom
                     wind.Show();
                     Hide();
                 }
+                else if(user.UsersStatus == "TopAdmin")
+                {
+                    Window_Menu wind = new Window_Menu();
+                    wind.Show();
+                    Hide();
+                }
                 else
                 {
                     MessageBox.Show("Пользователь неправильно зарегестрирован!");

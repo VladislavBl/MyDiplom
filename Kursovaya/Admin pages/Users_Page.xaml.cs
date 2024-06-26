@@ -21,10 +21,11 @@ namespace Diplom.Admin_pages
     /// </summary>
     public partial class Users_Page : Page
     {
-
+        User user;
         public Users_Page()
         {
             InitializeComponent();
+            this.user = ((MainWindow)Application.Current.MainWindow).user!;
             Update();
         }
 
@@ -40,13 +41,28 @@ namespace Diplom.Admin_pages
                 MessageBox.Show("Ошибка: Нужно выбрать хотя бы одну строку!");
                 return;
             }
-            foreach (var selectedItem in DataGridUsers.SelectedItems)
+            if(user.UsersStatus != "TopAdmin")
             {
-                var user = selectedItem as User;
-                if (user != null && user.UsersStatus == "Admin")
+                foreach (var selectedItem in DataGridUsers.SelectedItems)
                 {
-                    MessageBox.Show("Ошибка: Нельзя удалять пользователя со статусом администратора");
-                    return;
+                    var user = selectedItem as User;
+                    if (user != null && user.UsersStatus == "Admin" || user != null && user.UsersStatus == "TopAdmin")
+                    {
+                        MessageBox.Show("Ошибка: Нельзя удалять пользователя со статусом администратора");
+                        return;
+                    }
+                }
+            }
+            if (user.UsersStatus == "TopAdmin")
+            {
+                foreach (var selectedItem in DataGridUsers.SelectedItems)
+                {
+                    var user = selectedItem as User;
+                    if (user != null && user.UsersStatus == "TopAdmin")
+                    {
+                        MessageBox.Show("Ошибка: Нельзя удалять пользователя со статусом главного администратора");
+                        return;
+                    }
                 }
             }
             if (MessageBox.Show("Вы уверены, что хотите удалить выбранные поля?", "Удалить выбранные поля?", MessageBoxButton.YesNo) == MessageBoxResult.No)

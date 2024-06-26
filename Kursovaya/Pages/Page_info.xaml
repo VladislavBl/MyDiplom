@@ -14,7 +14,7 @@
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="20">
 
-            <!-- Информация пользователя -->
+            
             <StackPanel Margin="10">
                 <TextBlock Text="Информация пользователя" Margin="0, 0, 0, 20" FontSize="25" FontWeight="SemiBold" HorizontalAlignment="Center"/>
 
@@ -38,7 +38,7 @@
                         Margin="0, 20"/>
             </StackPanel>
 
-            <!-- Изменить пароль -->
+           
             <StackPanel Margin="10">
                 <TextBlock Text="Изменить пароль" Margin="0, 0, 0, 20" FontSize="25" FontWeight="SemiBold" HorizontalAlignment="Center"/>
 
@@ -61,7 +61,7 @@
                         HorizontalAlignment="Stretch" Background="MidnightBlue" Foreground="White" 
                         Margin="0, 20"/>
             </StackPanel>
-
+ 
         </StackPanel>
     </ScrollViewer>
 </Page>
